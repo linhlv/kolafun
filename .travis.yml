@@ -7,8 +7,8 @@ addons:
 
 before_install:
   #
-  sudo apt-get -qq update
-  sudo apt-get install ruby-dev
+  - sudo apt-get -qq update
+  - sudo apt-get install ruby-dev -y
 
 install:
   #
