@@ -7,7 +7,7 @@ addons:
 
 before_install:
   #
-  apt-get install ruby-dev
+  #apt-get install ruby-dev
 
 install:
   #
@@ -15,7 +15,7 @@ install:
 
 before_script:
 
-script: gulp travis
+script: gulp travis1
 
 before_deploy:
 - openssl aes-256-cbc -K $encrypted_32a7a5230582_key -iv $encrypted_32a7a5230582_iv -in deploy_rsa.enc -out /tmp/deploy_rsa -d

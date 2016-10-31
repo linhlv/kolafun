@@ -1,5 +1,5 @@
 var gulp = require('gulp');
 
-gulp.task('travis', function(){
+gulp.task('travis1', function(){
     console.log('Gulped Travis.');
 });
