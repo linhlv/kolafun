@@ -21,7 +21,7 @@ script: gulp travis1
 after_success:
   #
   - mkdir build
-  - mv * build
+  - cp * build
   - tar -czf package-build-$TRAVIS_BUILD_ID.tgz build
 
 before_deploy:
@@ -34,7 +34,7 @@ before_deploy:
 deploy:
   provider: script
   skip_cleanup: true
-  script:    
+  script:
     - scp -r $TRAVIS_BUILD_DIR/package-build-$TRAVIS_BUILD_ID.tgz root@139.59.36.122:/home/node/kolofun/
   on:
     branch: master
