@@ -10,9 +10,12 @@ before_install:
 
 install:
   #
+  - npm install -g gulp
+  - npm install
 
 before_script:
-  - npm install & npm install -g gulp
+
+
 
 script: gulp travis
 
