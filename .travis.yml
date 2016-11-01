@@ -21,7 +21,7 @@ script: gulp travis1
 after_success:
   #
   - mkdir build
-  - echo 'mkdir b$TRAVIS_BUILD_ID' >> make-folder.sh
+  - echo "mkdir b$TRAVIS_BUILD_ID" >> make-folder.sh
   - cp * build
   - tar -czf package-build-$TRAVIS_BUILD_ID.tgz build
 
