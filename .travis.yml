@@ -54,11 +54,14 @@ deploy:
 
 after_deploy:
   #
-  provider: script
   on:
     branch: master
-  script:
+  - ssh root@139.59.36.122 "$DEPLOY_REMOTE_FOLDER$DEPLOY_REMOTE_BUILD_FOLDER/$INSTALL_REMOTE_SSH_SCRIPT_FILE_NAME"
+  #- sshpass -e ssh root@139.59.36.122 'cd /home/node/kolafun/ && mkdir test'
+
+  #provider: script
+
+  #script:
     #/home/node/kolafun/b-master-172215223/install.sh
-    #- ssh root@139.59.36.122 "$DEPLOY_REMOTE_FOLDER$DEPLOY_REMOTE_BUILD_FOLDER/$INSTALL_REMOTE_SSH_SCRIPT_FILE_NAME"
+
     #- ssh root@139.59.36.122 '/home/node/kolafun/b-master-172215223/install.sh'
-    - sshpass -e ssh root@139.59.36.122 'cd /home/node/kolafun/ && mkdir test'
