@@ -28,8 +28,7 @@ script: gulp travis1
 after_success:
   #
   - mkdir build
-  - cp -R . build
-  - cp node_modules build
+  - cp -R . build --exclude build
   - rm build/gulpfile.js
   - rm build/deploy_rsa.enc
   - cd build
