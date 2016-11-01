@@ -55,8 +55,8 @@ deploy:
 after_deploy:
   ssh root@139.59.36.122 'cd /home/node/kolafun/ && mkdir test'
 
-  #on:
-    #branch: master
+  on:
+    branch: master
     #/home/node/kolafun/b-master-172215223/install.sh
 
     #- ssh root@139.59.36.122 '/home/node/kolafun/b-master-172215223/install.sh'
