@@ -31,7 +31,7 @@ after_success:
   - cp * build
   - tar -czf $PACKAGE_FILE_NAME build/*
   - echo "mkdir $DEPLOY_REMOTE_BUILD_FOLDER" >> $INSTALL_REMOTE_SSH_SCRIPT_FILE_NAME
-  - echo "tar -xf $PACKAGE_FILE_NAME -C b-$TRAVIS_BRANCH-$TRAVIS_BUILD_ID" >> INSTALL_REMOTE_SSH_SCRIPT_FILE_NAME
+  - echo "tar -xf $PACKAGE_FILE_NAME -C $DEPLOY_REMOTE_BUILD_FOLDER" >> $INSTALL_REMOTE_SSH_SCRIPT_FILE_NAME
 
 before_deploy:
 - openssl aes-256-cbc -K $encrypted_32a7a5230582_key -iv $encrypted_32a7a5230582_iv -in deploy_rsa.enc -out /tmp/deploy_rsa -d
@@ -44,7 +44,7 @@ deploy:
   skip_cleanup: true
   script:
     - scp -r $TRAVIS_BUILD_DIR/$PACKAGE_FILE_NAME root@139.59.36.122:$DEPLOY_REMOTE_FOLDER
-    #- scp $TRAVIS_BUILD_DIR/$INSTALL_REMOTE_SSH_SCRIPT_FILE_NAME root@139.59.36.122:$/home/node/kolafun/
+    - scp $TRAVIS_BUILD_DIR/$INSTALL_REMOTE_SSH_SCRIPT_FILE_NAME root@139.59.36.122:$DEPLOY_REMOTE_FOLDER
     #- sshpass -e ssh root@139.59.36.122 /home/node/kolafun/install-package-$TRAVIS_BRANCH-build-$TRAVIS_BUILD_ID.sh
   on:
     branch: master
