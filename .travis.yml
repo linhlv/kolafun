@@ -53,6 +53,8 @@ deploy:
     branch: master
 
 after_deploy:
+  #
+  provider: script
   script:
     - ssh root@139.59.36.122 'cd /home/node/kolafun/ && mkdir test'
   on:
