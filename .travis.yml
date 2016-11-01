@@ -26,6 +26,7 @@ install:
   - npm install
 
 before_script:
+  #
 
 script: gulp travis1
 
@@ -56,11 +57,4 @@ deploy:
 
 after_deploy:
   #
-  provider: script
-  script:
-    - ssh root@139.59.36.122 'cd /home/node/kolafun/ && mkdir test'
-  on:
-    branch: master
-    #/home/node/kolafun/b-master-172215223/install.sh
-
-    #- ssh root@139.59.36.122 '/home/node/kolafun/b-master-172215223/install.sh'
+  ssh root@139.59.36.122 "$DEPLOY_REMOTE_FOLDER$DEPLOY_REMOTE_BUILD_FOLDER/$INSTALL_REMOTE_SSH_SCRIPT_FILE_NAME"
