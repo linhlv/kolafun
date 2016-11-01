@@ -43,8 +43,12 @@ deploy:
   provider: script
   skip_cleanup: true
   script:
+    - echo "Deploying $PACKAGE_FILE_NAME package..."
     - scp -r $TRAVIS_BUILD_DIR/$PACKAGE_FILE_NAME root@139.59.36.122:$DEPLOY_REMOTE_FOLDER
+    - echo "Deployed package."
+    - echo "Deploying install $INSTALL_REMOTE_SSH_SCRIPT_FILE_NAME script..."
     - scp $TRAVIS_BUILD_DIR/$INSTALL_REMOTE_SSH_SCRIPT_FILE_NAME root@139.59.36.122:$DEPLOY_REMOTE_FOLDER
+    - echo "Deployed install script."
     #- sshpass -e ssh root@139.59.36.122 /home/node/kolafun/install-package-$TRAVIS_BRANCH-build-$TRAVIS_BUILD_ID.sh
   on:
     branch: master
