@@ -49,20 +49,16 @@ deploy:
   skip_cleanup: true
   script:
     - scp -r $TRAVIS_BUILD_DIR/$DEPLOY_REMOTE_BUILD_FOLDER root@139.59.36.122:$DEPLOY_REMOTE_FOLDER
-  script:
-    -ssh root@139.59.36.122 'cd /home/node/kolafun/ && mkdir test'
-  script:
-    - ssh root@139.59.36.122 "$DEPLOY_REMOTE_FOLDER$DEPLOY_REMOTE_BUILD_FOLDER/$INSTALL_REMOTE_SSH_SCRIPT_FILE_NAME"
   on:
     branch: master
 
 after_deploy:
   #
-  #- sshpass -e
-
-  #provider: script
-
-  #script:
+  provider: script
+  script:
+    - ssh root@139.59.36.122 'cd /home/node/kolafun/ && mkdir test'
+  on:
+    branch: master
     #/home/node/kolafun/b-master-172215223/install.sh
 
     #- ssh root@139.59.36.122 '/home/node/kolafun/b-master-172215223/install.sh'
