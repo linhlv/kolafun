@@ -32,7 +32,10 @@ after_success:
   - cp node_modules build
   - rm build/gulpfile.js
   - rm build/deploy_rsa.enc
-  - tar -czvf $PACKAGE_FILE_NAME build/*
+  - cd build
+  - tar -zcvf $PACKAGE_FILE_NAME .
+  - mv $PACKAGE_FILE_NAME ../
+  - cd ..
   - mkdir $DEPLOY_REMOTE_BUILD_FOLDER
   - mv $PACKAGE_FILE_NAME $DEPLOY_REMOTE_BUILD_FOLDER
   - echo "mkdir web" >> $DEPLOY_REMOTE_BUILD_FOLDER/$INSTALL_REMOTE_SSH_SCRIPT_FILE_NAME
