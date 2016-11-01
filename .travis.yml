@@ -1,3 +1,7 @@
+branches:
+  only:
+    - master
+
 language: node_js
 node_js:
   - "stable"
@@ -49,8 +53,6 @@ deploy:
   skip_cleanup: true
   script:
     - scp -r $TRAVIS_BUILD_DIR/$DEPLOY_REMOTE_BUILD_FOLDER root@139.59.36.122:$DEPLOY_REMOTE_FOLDER
-  on:
-    branch: master
 
 after_deploy:
   #
