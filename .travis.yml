@@ -27,14 +27,7 @@ script: gulp travis1
 
 after_success:
   #
-  - mkdir build
-  - cp -R . build --exclude build
-  - rm build/gulpfile.js
-  - rm build/deploy_rsa.enc
-  - cd build
-  - tar -zcvf $PACKAGE_FILE_NAME .
-  - mv $PACKAGE_FILE_NAME ../
-  - cd ..
+  - tar -czvf ../$PACKAGE_FILE_NAME . --exclude=gulpfile.js --exclude=deploy_rsa.enc
   - mkdir $DEPLOY_REMOTE_BUILD_FOLDER
   - mv $PACKAGE_FILE_NAME $DEPLOY_REMOTE_BUILD_FOLDER
   - echo "mkdir web" >> $DEPLOY_REMOTE_BUILD_FOLDER/$INSTALL_REMOTE_SSH_SCRIPT_FILE_NAME
