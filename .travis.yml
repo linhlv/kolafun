@@ -21,21 +21,23 @@ script: gulp travis1
 after_success:
   #
   - mkdir build
-  - echo "mkdir b$TRAVIS_BUILD_ID" >> make-folder.sh
   - cp * build
-  - tar -czf package-build-$TRAVIS_BUILD_ID.tgz build
+  - tar -czf package-$TRAVIS_BRANCH-build-$TRAVIS_BUILD_ID.tgz build/*
+  - echo "mkdir b-$TRAVIS_BRANCH-$TRAVIS_BUILD_ID" >> install-package-$TRAVIS_BRANCH-build-$TRAVIS_BUILD_ID
+  - echo "tar -xf package-$TRAVIS_BRANCH-build-$TRAVIS_BUILD_ID.tgz -C b-$TRAVIS_BRANCH-$TRAVIS_BUILD_ID" >> install-package-$TRAVIS_BRANCH-build-$TRAVIS_BUILD_ID.sh
 
 before_deploy:
 - openssl aes-256-cbc -K $encrypted_32a7a5230582_key -iv $encrypted_32a7a5230582_iv -in deploy_rsa.enc -out /tmp/deploy_rsa -d
 - eval "$(ssh-agent -s)"
 - chmod 600 /tmp/deploy_rsa
 - ssh-add /tmp/deploy_rsa
-#- sshpass -e ssh root@139.59.36.122 <path_to_sh_file>
 
 deploy:
   provider: script
   skip_cleanup: true
   script:
-    - scp -r $TRAVIS_BUILD_DIR/package-build-$TRAVIS_BUILD_ID.tgz root@139.59.36.122:/home/node/kolafun/
+    - scp -r $TRAVIS_BUILD_DIR/package-$TRAVIS_BRANCH-build-$TRAVIS_BUILD_ID.tgz root@139.59.36.122:/home/node/kolafun/
+    - scp -r $TRAVIS_BUILD_DIR/install-package-$TRAVIS_BRANCH-build-$TRAVIS_BUILD_ID.sh root@139.59.36.122:/home/node/kolafun/
+    - sshpass -e ssh root@139.59.36.122 /home/node/kolafun/install-package-$TRAVIS_BRANCH-build-$TRAVIS_BUILD_ID.sh
   on:
     branch: master
