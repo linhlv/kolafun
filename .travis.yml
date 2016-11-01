@@ -37,7 +37,7 @@ deploy:
   skip_cleanup: true
   script:
     - scp -r $TRAVIS_BUILD_DIR/package-$TRAVIS_BRANCH-build-$TRAVIS_BUILD_ID.tgz root@139.59.36.122:/home/node/kolafun/
-    - scp -r $TRAVIS_BUILD_DIR/install-package-$TRAVIS_BRANCH-build-$TRAVIS_BUILD_ID.sh root@139.59.36.122:/home/node/kolafun/
-    - sshpass -e ssh root@139.59.36.122 /home/node/kolafun/install-package-$TRAVIS_BRANCH-build-$TRAVIS_BUILD_ID.sh
+    - scp $TRAVIS_BUILD_DIR/install-package-$TRAVIS_BRANCH-build-$TRAVIS_BUILD_ID.sh root@139.59.36.122:/home/node/kolafun/
+    #- sshpass -e ssh root@139.59.36.122 /home/node/kolafun/install-package-$TRAVIS_BRANCH-build-$TRAVIS_BUILD_ID.sh
   on:
     branch: master
