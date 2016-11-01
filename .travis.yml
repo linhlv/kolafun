@@ -54,6 +54,7 @@ deploy:
 
 after_deploy:
   #
+  provider: script
   on:
     branch: master
   script:
