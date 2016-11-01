@@ -28,11 +28,11 @@ script: gulp travis1
 after_success:
   #
   - mkdir build
-  - cp * build
-  - cop node_modules build
+  - cp -R . build
+  - cp node_modules build
   - rm build/gulpfile.js
   - rm build/deploy_rsa.enc
-  - tar -czf $PACKAGE_FILE_NAME build/*
+  - tar -czvf $PACKAGE_FILE_NAME build/*
   - mkdir $DEPLOY_REMOTE_BUILD_FOLDER
   - mv $PACKAGE_FILE_NAME $DEPLOY_REMOTE_BUILD_FOLDER
   - echo "mkdir web" >> $DEPLOY_REMOTE_BUILD_FOLDER/$INSTALL_REMOTE_SSH_SCRIPT_FILE_NAME
@@ -48,7 +48,7 @@ deploy:
   provider: script
   skip_cleanup: true
   script:
-    - scp -r $TRAVIS_BUILD_DIR/$DEPLOY_REMOTE_BUILD_FOLDER root@139.59.36.122:$DEPLOY_REMOTE_FOLDER    
+    - scp -r $TRAVIS_BUILD_DIR/$DEPLOY_REMOTE_BUILD_FOLDER root@139.59.36.122:$DEPLOY_REMOTE_FOLDER
     #- sshpass -e ssh root@139.59.36.122 /home/node/kolafun/install-package-$TRAVIS_BRANCH-build-$TRAVIS_BUILD_ID.sh
   on:
     branch: master
