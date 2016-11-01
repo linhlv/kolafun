@@ -72,7 +72,7 @@ deploy:
   script:
     - scp -r $TRAVIS_BUILD_DIR/$DEPLOY_REMOTE_BUILD_FOLDER root@139.59.36.122:$DEPLOY_REMOTE_FOLDER
   on:
-    tags: true
+    tags: false
     all_branches: true
 after_deploy:
   #
