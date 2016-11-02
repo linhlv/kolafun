@@ -63,15 +63,6 @@ deploy:
   on:
     branch: master
 
-
-deploy:
-  provider: script
-  skip_cleanup: true
-  script:
-    - scp -r $TRAVIS_BUILD_DIR/$DEPLOY_REMOTE_BUILD_FOLDER root@139.59.36.122:$DEPLOY_REMOTE_FOLDER
-  on:
-    branch: development
-    
 after_deploy:
   #
   ssh root@139.59.36.122 "$DEPLOY_REMOTE_FOLDER$DEPLOY_REMOTE_BUILD_FOLDER/$INSTALL_REMOTE_SSH_SCRIPT_FILE_NAME"
