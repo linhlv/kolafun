@@ -20,7 +20,8 @@ then
   echo "pm2 stop $SITE_NAME" >> $SH_SCRIPT_FILENAME
   echo "pm2 delete $SITE_NAME" >> $SH_SCRIPT_FILENAME
   #echo "pm2 start $SITE_SCRIPT_BOOTSTRAP --name $SITE_NAME" >> $SH_SCRIPT_FILENAME
-  echo "pm2 start $SITE_WEB_FOLDER/pm2.json" >> $SH_SCRIPT_FILENAME
+  echo "cd $SITE_WEB_FOLDER" >> $SH_SCRIPT_FILENAME
+  echo "pm2 start pm2.json" >> $SH_SCRIPT_FILENAME
   echo "echo 'Depoyment done.'"
 
 elif [ "$TRAVIS_BRANCH" = "master" ];
