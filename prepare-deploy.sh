@@ -16,7 +16,7 @@ then
 elif [ "$TRAVIS_BRANCH" = "master" ];
 then
   #for master
-  echo "mkdir master" >> $DEPLOY_REMOTE_BUILD_FOLDER/$INSTALL_REMOTE_SSH_SCRIPT_FILE_NAME
+  echo "#do nothing" >> $DEPLOY_REMOTE_BUILD_FOLDER/$INSTALL_REMOTE_SSH_SCRIPT_FILE_NAME
 else
   #for other branch
   echo "#do nothing"
