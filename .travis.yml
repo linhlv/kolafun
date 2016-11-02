@@ -34,7 +34,7 @@ install:
 before_script:
   #
 
-script: gulp travis1
+script: gulp travis
 
 after_success:
   #

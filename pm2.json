@@ -3,7 +3,7 @@
     [
         {
             "name":"dev.kolafun.appiume.com",
-            "script":"./server.js",
+            "script":"./bin/www",
             "log_date_format":"MM-DD-YYYY HH:mm Z",            
             "out_file":"logs/dev.kolafun.appiume.com.log",
             "error_file":"logs/dev.kolafun.appiume.com.err.log",
