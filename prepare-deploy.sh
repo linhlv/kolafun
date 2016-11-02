@@ -14,13 +14,13 @@ if [ "$TRAVIS_BRANCH" = "development" ];
 then
   SITE_NAME=dev.kolafun.appiume.com
   #for development
-  echo "mkdir web" >> $SH_SCRIPT_FILENAME
-  echo "mkdir web/logs" >> $SH_SCRIPT_FILENAME
+  echo "mkdir $SITE_WEB_FOLDER" >> $SH_SCRIPT_FILENAME
+  echo "mkdir $SITE_WEB_FOLDER/logs" >> $SH_SCRIPT_FILENAME
   echo "tar -xf $PACKAGE_FILE_NAME -C web" >> $SH_SCRIPT_FILENAME
   echo "pm2 stop $SITE_NAME" >> $SH_SCRIPT_FILENAME
   echo "pm2 delete $SITE_NAME" >> $SH_SCRIPT_FILENAME
   #echo "pm2 start $SITE_SCRIPT_BOOTSTRAP --name $SITE_NAME" >> $SH_SCRIPT_FILENAME
-  echo "pm2 start pm2.json" >> $SH_SCRIPT_FILENAME
+  echo "pm2 start $SITE_WEB_FOLDER/pm2.json" >> $SH_SCRIPT_FILENAME
   echo "echo 'Depoyment done.'"
 
 elif [ "$TRAVIS_BRANCH" = "master" ];
