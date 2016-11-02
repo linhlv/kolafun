@@ -38,7 +38,7 @@ script: gulp travis1
 
 after_success:
   #
-  -./prepare-deploy.sh
+  - ./prepare-deploy.sh
 
 before_deploy:
   #
